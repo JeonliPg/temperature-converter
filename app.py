@@ -34,4 +34,4 @@ def calculate():
         return render_template('index.html', calculation_result="Error en la operación", expression=expression)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host='0.0.0.0', port=5000)
