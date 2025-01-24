@@ -8,46 +8,24 @@
 </head>
 <body>
     <div class="container">
-        <h1>Calculadora Futurista de Temperatura y Matemática</h1>
+        <h1>Convertidor de Temperatura</h1>
+        <form action="/convert" method="POST">
+            <label for="temperature">Ingresa la Tempertura:</label>
+            <input type="number" id="temperature" name="temperature" step="0.01" required>
+            <label for="unit">Selecciona:</label>
+            <select id="unit" name="unit">
+                <option value="C">Celsius</option>
+                <option value="F">Fahrenheit</option>
+            </select>
+            <button type="submit">Convertir</button>
+        </form>
 
-        <!-- Conversión de Temperatura -->
-        <div class="temperature-converter">
-            <h2>Convertir Temperatura</h2>
-            <form action="/convert" method="POST">
-                <label for="temperature">Ingresa la temperatura:</label>
-                <input type="number" id="temperature" name="temperature" step="0.01" required>
-                
-                <button type="submit">Convertir</button>
-            </form>
-            
-            {% if result is not none %}
-                <div class="result">
-                    <h3>Resultados de Conversión</h3>
-                    <p>{{ original_temp }} °C es igual a:</p>
-                    <p>{{ result_fahrenheit }} °F</p>
-                    <p>{{ result_kelvin }} K</p>
-                    <p>{{ result_rankine }} °Ra</p>
-                </div>
-            {% endif %}
-        </div>
-
-        <hr>
-
-        <!-- Calculadora Básica -->
-        <div class="basic-calculator">
-            <h2>Calculadora Básica</h2>
-            <form action="/calculate" method="POST">
-                <input type="text" name="expression" placeholder="Ingresa una operación (ej. 5 + 3)" required>
-                <button type="submit">Calcular</button>
-            </form>
-
-            {% if calculation_result is not none %}
-                <div class="result">
-                    <h3>Resultado de la Calculadora</h3>
-                    <p>{{ expression }} = {{ calculation_result }}</p>
-                </div>
-            {% endif %}
-        </div>
+        {% if result is not none %}
+            <div class="result">
+                <h2>Resultado de la conversion</h2>
+                <p>{{ original_temp }} {{ original_unit }} es {{ result }} {{ converted_unit }}</p>
+            </div>
+        {% endif %}
     </div>
 </body>
 </html>
