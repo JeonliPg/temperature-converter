@@ -8,22 +8,22 @@
 </head>
 <body>
     <div class="container">
-        <h1>Convert Temperature</h1>
+        <h1>Convertidor de Temperatura</h1>
         <form action="/convert" method="POST">
-            <label for="temperature">Enter Temperature:</label>
+            <label for="temperature">Ingresa la Temperatura Deseada:</label>
             <input type="number" id="temperature" name="temperature" step="0.01" required>
-            <label for="unit">Select Unit:</label>
+            <label for="unit">Selecciona:</label>
             <select id="unit" name="unit">
                 <option value="C">Celsius</option>
                 <option value="F">Fahrenheit</option>
             </select>
-            <button type="submit">Convert</button>
+            <button type="submit">Convertir</button>
         </form>
 
         {% if result is not none %}
             <div class="result">
                 <h2>Conversion Result</h2>
-                <p>{{ original_temp }} {{ original_unit }} is {{ result }} {{ converted_unit }}</p>
+                <p>{{ original_temp }} {{ original_unit }} Es {{ result }} {{ converted_unit }}</p>
             </div>
         {% endif %}
     </div>
