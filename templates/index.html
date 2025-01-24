@@ -1,29 +1,29 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculadora de Temperatura y Básica</title>
+    <title>Temperature Converter</title>
     <link rel="stylesheet" href="/static/styles.css">
 </head>
 <body>
     <div class="container">
-        <h1>Convertidor de Temperatura</h1>
+        <h1>Convert Temperature</h1>
         <form action="/convert" method="POST">
-            <label for="temperature">Ingresa la Tempertura:</label>
+            <label for="temperature">Enter Temperature:</label>
             <input type="number" id="temperature" name="temperature" step="0.01" required>
-            <label for="unit">Selecciona:</label>
+            <label for="unit">Select Unit:</label>
             <select id="unit" name="unit">
                 <option value="C">Celsius</option>
                 <option value="F">Fahrenheit</option>
             </select>
-            <button type="submit">Convertir</button>
+            <button type="submit">Convert</button>
         </form>
 
         {% if result is not none %}
             <div class="result">
-                <h2>Resultado de la conversion</h2>
-                <p>{{ original_temp }} {{ original_unit }} es {{ result }} {{ converted_unit }}</p>
+                <h2>Conversion Result</h2>
+                <p>{{ original_temp }} {{ original_unit }} is {{ result }} {{ converted_unit }}</p>
             </div>
         {% endif %}
     </div>

@@ -8,30 +8,15 @@ def index():
 
 @app.route('/convert', methods=['POST'])
 def convert():
-    try:
-        temperature = float(request.form['temperature'])
-        
-        # Conversión de Temperatura
-        result_fahrenheit = (temperature * 9/5) + 32
-        result_kelvin = temperature + 273.15
-        result_rankine = (temperature + 273.15) * 9/5
-
-        return render_template('index.html', 
-                               original_temp=temperature, 
-                               result_fahrenheit=result_fahrenheit, 
-                               result_kelvin=result_kelvin, 
-                               result_rankine=result_rankine)
-    except ValueError:
-        return "Por favor ingresa un valor válido para la temperatura."
-
-@app.route('/calculate', methods=['POST'])
-def calculate():
-    try:
-        expression = request.form['expression']
-        result = eval(expression)
-        return render_template('index.html', calculation_result=result, expression=expression)
-    except Exception as e:
-        return render_template('index.html', calculation_result="Error en la operación", expression=expression)
+    temperature = float(request.form['temperature'])
+    unit = request.form['unit']
+    if unit == 'C':
+        result = (temperature * 9/5) + 32
+        converted_unit = 'Fahrenheit'
+    else:
+        result = (temperature - 32) * 5/9
+        converted_unit = 'Celsius'
+    return render_template('index.html', result=result, converted_unit=converted_unit, original_temp=temperature, original_unit=unit)
 
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=5000)
